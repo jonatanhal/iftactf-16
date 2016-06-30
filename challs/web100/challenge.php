@@ -10,12 +10,14 @@ function login($username, $password) {
         die("Failed to connect to database - " . $db->connect_errno . " : " . $db->connect_error);
     }
 
-    $q = "SELECT USERNAME FROM db_web100 WHERE USERNAME = '" . $db->escape_string($username) . "' AND password = '" . $password ."'";
-    $ok = $db->query($q);
-    if ($ok) {
+    $q = "SELECT uid FROM db_web100 WHERE USERNAME = '" . $db->escape_string($username) . "' AND password = '" . $password ."'";
+    $r = $db->query($q);
+    foreach($r as $row) {
         $db->close();
-        die("Hello " . $username . ", Your flag is: " . $flag);
+        die("Well done! Your flag is: " . $flag);
+
     }
+
     $db->close();
     return "nope";
 }
@@ -39,9 +41,7 @@ $output = '<!DOCTYPE html>
 <header>
 <h3>Login</h3>
 <hr>';
-if ( $_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['password'] == "") {
-    $output .= '<p class="text-danger">Please fill out both fields</p><hr>';
-} else if ($FAIL === "nope") {
+if ($FAIL === "nope") {
     $output .= '<p class="text-danger"><marquee>Wrong password!</marquee></p><hr>';
 }
 $output .= '</header><form method="GET">
