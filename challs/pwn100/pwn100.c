@@ -11,7 +11,7 @@ get_flag()
 	int fh;
 	char buffer[256];
 	
-	fh = open("/home/n00b/iftactf-16/flags/pwn100.flag", O_RDONLY);
+	fh = open("/home/pwn100/flag.txt", O_RDONLY);
 	if (fh == -1) {
 		errx(1, strerror(errno));
 	}
