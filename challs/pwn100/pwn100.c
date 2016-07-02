@@ -28,6 +28,7 @@ main(int argc, char **argv)
 	long returnaddr;
 	char buffer[128];
 	puts("Input the magic string and recieve a flag: ");
+	fflush(stdout);
 	gets(buffer);
 	if (strlen(buffer) > 128) {
 		puts("!! HACKER DETECTED !!");
@@ -37,6 +38,6 @@ main(int argc, char **argv)
 	strcmp(buffer, secretPassword);
 
 	returnaddr = __builtin_return_address(0);
-	printf("Saved Return Address: %p\n", (void *) returnaddr);
+	printf("[debug] - Saved Return Address: %p\n", (void *) returnaddr);
 	return 0;
 }
