@@ -1,0 +1,2 @@
+flag:
+	@echo "iftactf{`uuidgen`}"
