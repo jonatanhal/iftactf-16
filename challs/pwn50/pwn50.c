@@ -14,8 +14,8 @@ int
 main()
 {
 	char input[size];
-	printf("Your input: %s\n", input);
 	fgets(input, size, stdin);
+	printf("Your input: %s\n", input);
 	printf(input);
 	if (change_me) {
 		get_flag();
