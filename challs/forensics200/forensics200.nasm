@@ -4,11 +4,10 @@ global _start
 
 section .text
 _start:
-	mov rbp, rsp		; save stack-pointer
+	mov rsi, rsp		; char*
 	xor rax, rax		; zero out rax
 	mov rcx, 47		; length
 	sub rsp, rcx		; make room on the stack
-	mov rsi, rbp		; char*
 l00p:   mov bl, byte [enc+rax]	; load encrypted char
 	xor bl, byte [key+rax]	; decrypt char
 	mov [rsi+rax], byte bl	; store decrypted
