@@ -1,0 +1,13 @@
+# this file is placed in /etc/xinitd.d/
+service forensics100
+{
+	disable = no
+	socket_type = stream
+	protocol = tcp
+	wait = no
+	user = forensics100
+	bind = 0.0.0.0
+	server = /home/forensics100/server
+	type = UNLISTED
+	port = 4004
+}
