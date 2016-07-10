@@ -1,0 +1,13 @@
+# this file is placed in /etc/xinitd.d/
+service pwn200
+{
+	disable = no
+	socket_type = stream
+	protocol = tcp
+	wait = no
+	user = pwn200
+	bind = 0.0.0.0
+	server = /home/pwn200/pwn200
+	type = UNLISTED
+	port = 4008
+}
