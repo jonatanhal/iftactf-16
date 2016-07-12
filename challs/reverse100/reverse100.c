@@ -6,8 +6,8 @@
 
 const char hint[] = "%s is not the signal we're looking for...\n";
 
-char
-*decrypt_flag()
+void
+decrypt_flag()
 {
 	int i;
 	const char key[] = {
