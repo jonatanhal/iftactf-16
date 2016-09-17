@@ -1,5 +1,9 @@
+#include<unistd.h>
+#include<string.h>
+#include<stdlib.h>
 #include<stdio.h>
 #include<errno.h>
+#include<err.h>
 #include<error.h>
 #include<stdlib.h>
 #include <sys/stat.h>
