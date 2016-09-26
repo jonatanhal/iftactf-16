@@ -1,6 +1,8 @@
 package main 
 
 import (
+	"context"
+	"time"
 	"os/exec"
 	"strings"
 	"net/http"
@@ -10,7 +12,6 @@ import (
 )
 
 var (
-	flag []byte
 	html []byte
 	err error = nil
 )
@@ -20,7 +21,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		c *exec.Cmd = nil
 		b = ""
 		cmd = []string{}
-
 	)
 
 	queries := r.URL.Query()
@@ -30,11 +30,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if len(cmd) != 0 {
-		c = exec.Command(cmd[0], cmd[1:] ...)
+		t := time.Now().Add(time.Second*5)
+		ctx, cancel := context.WithDeadline(t)
+		defer cancel()
+		c = exec.CommandContext(ctx, cmd[0], cmd[1:] ...)
 		c.Stderr = w
 		c.Stdout = w
-
 	} 
+
 	fmt.Fprintf(w, string(html))
 	if c != nil {
 		err := c.Run()
@@ -45,10 +48,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func init() {
-	flag, err = ioutil.ReadFile("/home/web150/flag.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
 	html, err = ioutil.ReadFile("/home/web150/index.html")
 	if err != nil {
 		log.Fatal(err)
