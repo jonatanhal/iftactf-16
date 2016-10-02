@@ -2,7 +2,7 @@ import socket, struct
 
 t = ("127.0.0.1", "4005")
 o = ['flag', 'dbug']
-L = 64
+L = 192
 
 def key():
     with open('forensics100.jpg', 'rb') as f:
