@@ -1,3 +1,4 @@
+#include<unistd.h>
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -58,9 +59,9 @@ main()
 	fread(cmd, 1, 4, stdin);
 
 	// debug stuff:
-	/* fwrite(&inputSize, 4, 1, stdout); */
-	/* fwrite(input, 1, size, stdout); */
-	/* fwrite(cmd, 1, 4, stdout); */
+	//fwrite(&inputSize, 4, 1, stdout);
+	//fwrite(input, 1, size, stdout);
+	//fwrite(cmd, 1, 4, stdout);
 
 	if (memcmp(key, input, size) == 0)
 	{
